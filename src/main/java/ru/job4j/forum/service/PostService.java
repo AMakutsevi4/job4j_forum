@@ -2,26 +2,34 @@ package ru.job4j.forum.service;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.forum.model.Post;
-import ru.job4j.forum.repository.PostMem;
+import ru.job4j.forum.repository.PostRepository;
+
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class PostService {
-    private final PostMem postMem;
+    private final PostRepository postRep;
 
-    public PostService(PostMem postMem) {
-        this.postMem = postMem;
+    public PostService(PostRepository postRep) {
+        this.postRep = postRep;
     }
 
     public Collection<Post> getAll() {
-        return postMem.findAllPosts();
+        List<Post> rsl = new ArrayList<>();
+        postRep.findAll().forEach(rsl::add);
+        return rsl;
     }
 
     public void create(Post post) {
-        this.postMem.create(post);
+        post.setCreated(new Date(System.currentTimeMillis()));
+        postRep.save(post);
+
     }
 
     public Post findPostById(int id) {
-        return postMem.findPostById(id);
+        return postRep.findById(id).orElse(null);
     }
 }
