@@ -28,4 +28,22 @@ class PostControlTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("/create"));
     }
+
+    @Test
+    @WithMockUser
+    public void shouldReturnDefaultMessageEdit() throws Exception {
+        this.mockMvc.perform(get("/edit?id=1"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(view().name("/edit"));
+    }
+
+    @Test
+    @WithMockUser
+    public void shouldReturnDefaultMessagePost() throws Exception {
+        this.mockMvc.perform(get("/post?id=1"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(view().name("/post"));
+    }
 }
