@@ -11,7 +11,9 @@
     <title>Форум</title>
 </head>
 <body>
-
+<div>
+    Вы вошли как : ${user.username}
+</div>
 <div class="container mt-3">
     <div class="container">
         <p class="text-center fs-2">Добро пожаловать на форум job4j</p>
