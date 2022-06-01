@@ -16,7 +16,7 @@
     </div>
 </nav>
 <div class="container mt-5">
-    <p class="text-center fs-2">Войди или зарегистрируйся</p>
+    <p class="text-center fs-2">Авторизация</p>
     <a href="<c:url value='/reg'/>">Регистрация</a>
 <c:if test="${not empty errorMessge}">
     <div style="color:red; font-weight: bold; margin: 30px 0px;">
